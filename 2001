@@ -1,1 +1,24 @@
+using System;
+class AplusB {
+  static void Main() {
+     Console.WriteLine("Введите целочисленные a и b (1 ≤ a,b ≤ 1000) через пробел.");
+        
+    int[] numbers = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
+    
+    if (numbers.Length != 2){
+        Console.WriteLine("Вы ввели неверное количество чисел! Попробуйте снова.");
+        return;
+    }
+        
+    int a = numbers[0];
+    int b = numbers[1];
+    
+    if (a >= 1 && a <= 1000 && b >= 1 && b <= 1000){
+         Console.WriteLine("Сумма введенных чисел равна: " + (a + b));
+    } else {
+        Console.WriteLine("Как минимум одно из введенных чисел не соответствует условию! Попробуйте снова.");
+    }
+  }  
+}
+
 
