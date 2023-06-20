@@ -1,0 +1,62 @@
+using System;
+class NumAlterSum {
+
+  static int Function (int[] arr){
+      int maxNum = 0;
+    
+    for (int i = 0; i <arr.Length; i++){
+            if(arr[i] > maxNum){
+                maxNum = arr[i];
+            }
+    }
+    
+    
+    for (int i = 0; i < arr.Length; i++){
+        if (arr[i] == maxNum){
+            arr[i] /= 2;
+        }
+        Console.Write(arr[i] + " ");
+    }
+    
+    Console.WriteLine(' ');
+    
+    return 0;
+  }
+    
+  static void Main() {
+    Console.WriteLine("Все введенные числа должны соответсвовать диапазону от 1 до 100, включительно.");
+    Console.WriteLine("Введите n (количество чисел в массиве)");
+      
+    int n = Int32.Parse(Console.ReadLine());
+    
+    if (n < 1 || n > 100){
+        Console.WriteLine("Число не соответсвует диапазону! Попробуйте снова.");
+        return;
+    }
+    
+    Console.WriteLine("Введите элементы массива через пробел, в количестве: " + n);
+    
+    int[] numbers = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
+    
+    if (numbers.Length != n){
+        Console.WriteLine("Вы ввели неверное количество элементов массива! Попробуйте снова.");
+        return;
+    }
+    
+    
+    for (int i = 0; i <numbers.Length; i++){
+        if (numbers[i] >= 1 && numbers[i] <= 100){
+            continue;
+        } else {
+            Console.WriteLine("Один из элементов массива не соответсвует диапазону! Попробуйте снова.");
+            return;
+        }
+    }
+    
+    Console.WriteLine("Первое преобразование: ");
+    Function(numbers);
+    Console.WriteLine("Второе преобразование: ");
+    Function(numbers);
+    
+  }
+}
