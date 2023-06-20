@@ -1,1 +1,40 @@
-
+using System;
+class NumAlterSum {
+  static void Main() {
+    Console.WriteLine("Все введенные числа должны соответсвовать диапазону от 1 до 10000, включительно.");
+    Console.WriteLine("Введите n (количество целых чисел для сложения)");
+      
+    int n = Int32.Parse(Console.ReadLine());
+    
+    if (n < 1 || n > 10000){
+        Console.WriteLine("Число не соответсвует диапазону! Попробуйте снова.");
+        return;
+    }
+     
+    Console.WriteLine("Введите следующее кол-во чисел через пробел: " + n);
+    
+    int[] numbers = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
+    
+    if (numbers.Length != n){
+        Console.WriteLine("Вы ввели неверное количество чисел! Попробуйте снова.");
+        return;
+    }
+    
+    int sum = 0;
+    
+    for (int i = 0; i < numbers.Length; i++){
+        if (numbers[i] >= 1 && numbers[i] <= 10000){
+            if (i % 2 == 0){
+                sum += numbers[i];
+            } else {
+                sum -= numbers[i];
+            }
+        } else {
+            Console.WriteLine("Одно из чисел не соответсвует диапазону! Попробуйте снова.");
+            return;
+        }
+    }
+    
+    Console.WriteLine("Сумма чисел равна: " + sum);
+}
+}
