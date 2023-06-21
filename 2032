@@ -1,0 +1,59 @@
+using System;
+class ZeroToFour {
+  static int CreateArray(){
+    Console.WriteLine("Введите n (количество чисел в массиве)");
+      
+    int n = Int32.Parse(Console.ReadLine());
+    
+    if (n < 1 || n > 1000){
+        Console.WriteLine("Число не соответсвует диапазону! Попробуйте снова.");
+        return -1;
+    }
+    
+    Console.WriteLine("Введите элементы массива через пробел, в количестве: " + n);
+    
+    int[] numbers = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
+    
+    if (numbers.Length != n){
+        Console.WriteLine("Вы ввели неверное количество элементов массива! Попробуйте снова.");
+        return -1;
+    }
+    
+    if (numbers[0] == 0){
+        Console.WriteLine("Первый элемент массива не может быть равен 0.");
+        return -1;
+    }
+    
+    
+    for (int i = 0; i <numbers.Length; i++){
+        if (numbers[i] >= 0 && numbers[i] <= 9){
+            continue;
+        } else {
+            Console.WriteLine("Один из элементов массива не соответсвует диапазону! Попробуйте снова.");
+            return -1;
+        }
+    }
+    
+    return Int32.Parse(string.Join("", numbers));
+  }
+  
+  static void Main() {
+    Console.WriteLine("Число n должно соответствовать диапазону от 1 до 1000, включительно.");
+    Console.WriteLine("Числа в массиве должны соответсвовать диапазону от 0 до 9 включительно.\nПервое число не должно быть равно нулю.");
+    
+    int firstNum = CreateArray();
+    
+    if (firstNum == -1){
+        return;
+    }
+    
+    int secondNum = CreateArray();
+    
+    if (secondNum == -1){
+        return;
+    }
+    
+    Console.WriteLine(firstNum > secondNum ? 1 : (firstNum == secondNum ? 0 : -1));
+    
+  }
+}
