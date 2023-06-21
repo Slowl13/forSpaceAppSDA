@@ -1,0 +1,47 @@
+using System;
+class ZeroToFour {
+  static void Main() {
+    Console.WriteLine("Все число n должно соответсвовать диапазону от 1 до 10000, включительно.");
+    Console.WriteLine("Числа в массиве должны соответсвовать диапазону от 0 до 4 включительно.");
+    Console.WriteLine("Введите n (количество чисел в массиве)");
+      
+    int n = Int32.Parse(Console.ReadLine());
+    
+    if (n < 1 || n > 10000){
+        Console.WriteLine("Число не соответсвует диапазону! Попробуйте снова.");
+        return;
+    }
+    
+    Console.WriteLine("Введите элементы массива через пробел, в количестве: " + n);
+    
+    int[] numbers = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
+    
+    if (numbers.Length != n){
+        Console.WriteLine("Вы ввели неверное количество элементов массива! Попробуйте снова.");
+        return;
+    }
+    
+    
+    for (int i = 0; i <numbers.Length; i++){
+        if (numbers[i] >= 0 && numbers[i] <= 4){
+            continue;
+        } else {
+            Console.WriteLine("Один из элементов массива не соответсвует диапазону! Попробуйте снова.");
+            return;
+        }
+    }
+    
+    int[] newArr = {0, 0, 0, 0, 0};
+    
+    for (int i = 0; i <numbers.Length; i++){
+        newArr[numbers[i]] += 1;
+    }
+    
+    Console.WriteLine("0 " + newArr[0]);
+    Console.WriteLine("1 " + newArr[1]);
+    Console.WriteLine("2 " + newArr[2]);
+    Console.WriteLine("3 " + newArr[3]);
+    Console.WriteLine("4 " + newArr[4]);
+    
+  }
+}
