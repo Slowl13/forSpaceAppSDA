@@ -1,5 +1,5 @@
 using System;
-class ZeroToFour {
+class ArrsToNum {
   static int CreateArray(){
     Console.WriteLine("Введите n (количество чисел в массиве)");
       
